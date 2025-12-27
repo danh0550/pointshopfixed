@@ -1,7 +1,5 @@
-displayName = 积分商店 Point Shop
-author = 局长，天乐，Lacewing，世纪小花
-version = 2.1.25.12061
-dllReferences = Microsoft.Extensions.DependencyInjection, Microsoft.Extensions.DependencyInjection.Abstractions, SixLabors.ImageSharp, YamlDotNet
-modReferences = SilkyUIFramework
-hideCode = true
-sortAfter = SilkyUIFramework
+displayName = SilkyUI
+author = 太阳照常升起
+version = 0.2.25.12061
+homepage = https://github.com/487666123/SilkyUIFramework
+dllReferences = Microsoft.Extensions.DependencyInjection, Microsoft.Extensions.DependencyInjection.Abstractions, SixLabors.ImageSharp
