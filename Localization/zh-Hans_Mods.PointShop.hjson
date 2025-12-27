@@ -1,0 +1,53 @@
+DisplayName: 积分商店
+NameFilter: 筛选
+Clear: 清空
+Buy: 购买
+ItemSearchTips: 请输入物品名
+Donate: 捐赠
+
+Configs: {
+	PointShopConfig: {
+		DisplayName: 积分商店配置
+
+		PointMultiplier: {
+			Label: 积分售价乘数
+			Tooltip: ""
+		}
+	}
+
+	PointShopClientSideConfig: {
+		DisplayName: 积分商店客户端配置
+
+		PointsDisplayWidget: {
+			Label: 积分数据小部件
+			Tooltip: ""
+		}
+
+		DisplayLinks: {
+			Label: 显示相关链接 (切换后请重新进入地图)
+			Tooltip: ""
+		}
+	}
+}
+
+Items: {
+	PointCoin: {
+		DisplayName: 积分币
+		Tooltip:
+			'''
+			[c/22cc22:敌怪死亡时掉落]
+			[c/cc22cc:进入背包时转换为积分]
+			[c/cccc22:受玩家运气以及敌怪稀有度影响]
+			'''
+	}
+}
+
+ShopItem: {
+	Lock: 商品未解锁
+	InsufficientPoints: 积分不足
+	ShopItemError: 商品不属于此环境
+}
+
+// Mods.PointShop.Keybin.SuperVault.DisplayName: Mods.PointShop.Keybinds.Mods.PointShop.Keybin.SuperVault.DisplayName
+Keybinds.PointShopUIKeybind.DisplayName: 积分商店 UI 开关
+// ShowGroupLinks: True

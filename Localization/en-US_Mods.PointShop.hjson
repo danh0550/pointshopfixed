@@ -1,0 +1,53 @@
+DisplayName: Point Shop
+NameFilter: Name Filter
+Clear: Clear
+Buy: Buy
+ItemSearchTips: Please enter the item name.
+Donate: Donate
+
+Configs: {
+	PointShopConfig: {
+		DisplayName: Point Shop Config
+
+		PointMultiplier: {
+			Label: Point Multiplier
+			Tooltip: ""
+		}
+	}
+
+	PointShopClientSideConfig: {
+		DisplayName: Point Shop Client Configuration
+
+		PointsDisplayWidget: {
+			Label: Points Data Display Widget
+			Tooltip: ""
+		}
+
+		DisplayLinks: {
+			Label: Show Related Links (Please Re-enter the Map After Switching)
+			Tooltip: ""
+		}
+	}
+}
+
+Items: {
+	PointCoin: {
+		DisplayName: Points Coin
+		Tooltip:
+			'''
+			[c/22cc22:Drops when an enemy dies]
+			[c/cc22cc:Converts to points when entering the inventory]
+			[c/cccc22:Affected by player's luck and enemy rarity]
+			'''
+	}
+}
+
+ShopItem: {
+	Lock: Item not unlocked
+	InsufficientPoints: Insufficient points
+	ShopItemError: Item does not belong to this environment
+}
+
+// Mods.PointShop.Keybin.SuperVault.DisplayName: Mods.PointShop.Keybinds.Mods.PointShop.Keybin.SuperVault.DisplayName
+Keybinds.PointShopUIKeybind.DisplayName: Points Shop UI Toggle
+ShowGroupLinks: True
