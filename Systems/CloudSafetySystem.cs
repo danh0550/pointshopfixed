@@ -1,3 +1,4 @@
+using System.Reflection;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -5,35 +6,45 @@ namespace PointShop.Systems;
 
 public class CloudSafetySystem : ModSystem
 {
-    public override void Load()
+    private static FieldInfo? CloudLimitField;
+
+    public override void PostUpdateEverything()
     {
-        On.Terraria.Cloud.resetClouds += Cloud_resetClouds;
-        On.Terraria.Cloud.addCloud += Cloud_addCloud;
+        EnsureValidCloudLimit();
     }
 
-    public override void Unload()
+    public override void PreDrawTiles()
     {
-        On.Terraria.Cloud.resetClouds -= Cloud_resetClouds;
-        On.Terraria.Cloud.addCloud -= Cloud_addCloud;
+        EnsureValidCloudLimit();
     }
 
     private static void EnsureValidCloudLimit()
     {
-        if (Main.cloudLimit < 1)
+        CloudLimitField ??= FindCloudLimitField();
+        if (CloudLimitField == null)
         {
-            Main.cloudLimit = 1;
+            return;
+        }
+
+        var currentValue = (int)CloudLimitField.GetValue(null)!;
+        if (currentValue < 1)
+        {
+            CloudLimitField.SetValue(null, 1);
         }
     }
 
-    private void Cloud_resetClouds(On.Terraria.Cloud.orig_resetClouds orig)
+    private static FieldInfo? FindCloudLimitField()
     {
-        EnsureValidCloudLimit();
-        orig();
+        return FindStaticIntField(typeof(Main), "cloudLimit")
+            ?? FindStaticIntField(typeof(Main), "maxClouds")
+            ?? FindStaticIntField(typeof(Cloud), "cloudLimit")
+            ?? FindStaticIntField(typeof(Cloud), "maxClouds");
     }
 
-    private void Cloud_addCloud(On.Terraria.Cloud.orig_addCloud orig)
+    private static FieldInfo? FindStaticIntField(Type type, string fieldName)
     {
-        EnsureValidCloudLimit();
-        orig();
+        const BindingFlags flags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static;
+        var field = type.GetField(fieldName, flags);
+        return field?.FieldType == typeof(int) ? field : null;
     }
 }
